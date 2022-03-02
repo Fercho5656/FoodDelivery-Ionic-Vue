@@ -8,10 +8,11 @@
     </ion-text>
   </ion-header>
   <ion-card>
-    <ion-card-header></ion-card-header>
+    <ion-card-header>
+      <ion-icon :icon="personCircle"></ion-icon>
+    </ion-card-header>
     <ion-card-content>
       <form>
-        <ion-icon :icon="personCircle"></ion-icon>
         <Input placeholder="Username" required v-model="username">
           <ion-icon :icon="personCircle"></ion-icon>
         </Input>
@@ -24,19 +25,15 @@
           <ion-icon :icon="lockClosed"></ion-icon>
         </Input>
         <ion-row class="ion-justify-content-center">
-          <ion-item>
-            <ion-button fill="clear" router-link href="/login">
-              <ion-text>Forgot password?</ion-text>
-            </ion-button>
-            <ion-button type="submit" size="default">Login</ion-button>
-          </ion-item>
+          <ion-button fill="clear" router-link href="/forgotpassword">
+            <ion-text>Forgot password?</ion-text>
+          </ion-button>
+          <ion-button type="submit" size="default">Login</ion-button>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-          <ion-item>
-            <ion-button fill="clear" router-link href="/register">
-              <ion-text>Don't have an account? Sign up</ion-text>
-            </ion-button>
-          </ion-item>
+          <ion-button fill="clear" router-link href="/register">
+            <ion-text>Don't have an account? Sign up</ion-text>
+          </ion-button>
         </ion-row>
       </form>
     </ion-card-content>
@@ -107,9 +104,10 @@ const password = ref();
 <style scoped>
 h1 {
   line-height: 1.5em;
+  font-weight: 700;
 }
 
-form > ion-icon {
+ion-card-header > ion-icon {
   font-size: 7rem;
 }
 </style>
