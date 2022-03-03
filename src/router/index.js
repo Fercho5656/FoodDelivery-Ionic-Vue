@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from '@ionic/vue-router'
 const routes = [
   {
     path: '/login',
-    name: 'Login',
-    component: () => import('../views/Login.vue')
+    name: 'Auth',
+    component: () => import('../views/Auth.vue')
   }
 ]
 
