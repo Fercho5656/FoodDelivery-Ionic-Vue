@@ -74,6 +74,6 @@ h1 {
 }
 
 ion-card-header > ion-icon {
-  font-size: 7rem;
+  font-size: 64px;
 }
 </style>
