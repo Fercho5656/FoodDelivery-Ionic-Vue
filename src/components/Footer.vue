@@ -1,6 +1,6 @@
 <template>
   <ion-footer>
-    <ion-toolbar class="ion-padding-vertical">
+    <ion-toolbar>
       <ion-row class="ion-justify-content-evenly">
         <div v-for="media in socialMedia" :key="media.url">
           <SocialMediaCircle :color="media.color" :url="media.url">
@@ -40,5 +40,9 @@ const socialMedia = [
 ];
 </script>
 
-<style>
+<style scoped>
+ion-toolbar {
+  padding-top: 16px;
+  --ion-safe-area-bottom: 16px;
+}
 </style>
