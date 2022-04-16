@@ -9,7 +9,7 @@
       <ion-icon :icon="personCircle" />
     </ion-card-header>
     <ion-card-content>
-      <form>
+      <form @submit="onRegisterUser">
         <Input placeholder="Username" v-model="username" required>
           <ion-icon :icon="personCircle" />
         </Input>
@@ -35,7 +35,7 @@
         <ion-button type="submit">
           <ion-text>Sign up</ion-text>
         </ion-button>
-        <ion-button fill="clear">
+        <ion-button fill="clear" @click="$emit('switchView', Login)">
           <ion-text>Already have an account? Login</ion-text>
         </ion-button>
       </form>
@@ -56,12 +56,33 @@ import {
 
 import { personCircle, lockClosed, mail } from "ionicons/icons";
 import Input from "./Input.vue";
+import Login from './Login.vue'
 import { ref } from "vue";
+
+import { registerUser } from "../services/database"
+
+const emit = defineEmits(['switchView'])
 
 const username = ref();
 const email = ref();
 const password = ref();
 const confirmPassword = ref();
+
+const onRegisterUser = async () => {
+  if (password.value !== confirmPassword.value) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  const user = {
+    fullname: username.value,
+    email: email.value,
+    password: password.value,
+    birthday: new Date("05/16/00"),
+  };
+
+  await registerUser(user);
+};
 </script>
 
 <style scoped>

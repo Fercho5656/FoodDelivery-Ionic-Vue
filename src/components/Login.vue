@@ -31,7 +31,10 @@
           <ion-button type="submit" size="default">Login</ion-button>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-          <ion-button fill="clear" router-link href="/register">
+          <ion-button
+            fill="clear"
+            @click="$emit('switchView', Register)"
+          >
             <ion-text>Don't have an account? Sign up</ion-text>
           </ion-button>
         </ion-row>
@@ -41,11 +44,7 @@
 </template>
 
 <script setup>
-import {
-  person,
-  personCircle,
-  lockClosed,
-} from "ionicons/icons";
+import { person, personCircle, lockClosed } from "ionicons/icons";
 import {
   IonInput,
   IonText,
@@ -61,7 +60,10 @@ import {
   IonCardHeader,
 } from "@ionic/vue";
 import Input from "../components/Input.vue";
+import Register from './Register.vue'
 import { ref } from "vue";
+
+const emit = defineEmits(["switchView"]);
 
 const username = ref();
 const password = ref();
