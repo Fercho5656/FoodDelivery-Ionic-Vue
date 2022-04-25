@@ -59,7 +59,7 @@ import Input from "./Input.vue";
 import Login from './Login.vue'
 import { ref } from "vue";
 
-import { registerUser } from "../services/database"
+import { registerUser } from "../services/auth"
 
 const emit = defineEmits(['switchView'])
 
