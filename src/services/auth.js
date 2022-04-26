@@ -1,4 +1,4 @@
-const { fetch } = window
+const { fetch, sessionStorage } = window
 
 export const registerUser = async user => {
   try {
@@ -33,10 +33,24 @@ export const login = async user => {
     const json = await response.json()
     console.log(json)
     if (response.status === 200) {
+      sessionStorage.setItem('token', json.token)
       return json
     } else {
       throw new Error(`Error logging in ${json}`)
     }
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const isAuthorized = async () => {
+  try {
+    const response = await fetch('https://localhost:5001/api/auth/check', {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      }
+    })
+    return response.status === 200
   } catch (err) {
     console.error(err)
   }
