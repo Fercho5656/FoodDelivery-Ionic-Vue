@@ -3,19 +3,27 @@ import { isAuthorized } from '../services/auth'
 
 const routes = [
   {
-    path: '/login',
-    name: 'Auth',
-    component: () => import('../views/Auth.vue'),
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
     path: '/',
     name: 'Main',
     component: () => import('../views/Main.vue'),
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue'),
+    meta: {
+      requiresAuth: false
     }
   }
 ]
@@ -27,7 +35,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const isLoggedIn = await isAuthorized()
-  if (to.name === 'Auth' && isLoggedIn) {
+  if (['Register', 'Login'].includes(to.name) && isLoggedIn) {
     next({ name: 'Main' })
   } else if (to.meta.requiresAuth && !isLoggedIn) {
     next({
