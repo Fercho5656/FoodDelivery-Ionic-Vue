@@ -19,8 +19,11 @@ import '@ionic/vue/css/display.css'
 
 import './theme/variables.css'
 
-createApp(App)
+const app = createApp(App)
   .use(IonicVue)
   .use(IonIcon)
   .use(router)
-  .mount('#app')
+
+router.isReady().then(() => {
+  app.mount('#app')
+})
