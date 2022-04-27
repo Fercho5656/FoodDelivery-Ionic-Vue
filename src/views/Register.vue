@@ -10,7 +10,7 @@
         <ion-icon :icon="personCircle" />
       </ion-card-header>
       <ion-card-content>
-        <form @submit="onRegisterUser">
+        <form @submit.prevent="onRegisterUser">
           <Input placeholder="Username" v-model="username" required>
           <ion-icon :icon="personCircle" />
           </Input>
