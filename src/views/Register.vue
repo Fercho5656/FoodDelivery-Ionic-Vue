@@ -34,6 +34,7 @@
         </form>
       </ion-card-content>
     </ion-card>
+    <Footer />
   </ion-page>
 </template>
 
@@ -51,6 +52,7 @@ import {
 
 import { personCircle, lockClosed, mail } from "ionicons/icons";
 import Input from "../components/Input.vue";
+import Footer from '../components/Footer.vue';
 import { ref } from "vue";
 
 import { registerUser } from "../services/auth"

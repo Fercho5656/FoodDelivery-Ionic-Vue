@@ -36,6 +36,7 @@
         </form>
       </ion-card-content>
     </ion-card>
+    <Footer />
   </ion-page>
 </template>
 
@@ -58,6 +59,7 @@ import {
   useIonRouter,
 } from "@ionic/vue";
 import Input from "../components/Input.vue";
+import Footer from '../components/Footer.vue';
 import { login } from '../services/auth'
 import { ref } from "vue";
 
