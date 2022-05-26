@@ -91,6 +91,8 @@ ion-text {
 }
 
 .stars {
+    max-width: 16ch;
+    text-align: left;
     color: #ffd700;
     top: 0;
     left: 0;
