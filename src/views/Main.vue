@@ -1,10 +1,15 @@
 <template>
     <ion-page>
         <ion-content>
-            <h1>Food :D</h1>
+            <h1>Main Page</h1>
             <ul>
-                <li v-for="i in 10">
-                    <FoodCard imgSrc='https://i.imgur.com/JTAn4e0.jpg' :stars="i" :timeToCook="i" :price="i" />
+                <li v-for="view in views">
+                    <LinkCard @click="redirect(view.path)">
+                        <template v-slot:title>
+                            <h2>{{ view.name }}</h2>
+                        </template>
+                        <ion-icon :icon="view.icon"></ion-icon>
+                    </LinkCard>
                 </li>
             </ul>
         </ion-content>
@@ -14,10 +19,42 @@
 <script setup>
 import {
     IonPage,
-    IonContent
+    IonContent,
+    IonIcon,
+    useIonRouter
 } from '@ionic/vue'
 
-import FoodCard from '../components/FoodCard.vue';
+import { pizzaOutline, appsOutline, restaurantOutline } from 'ionicons/icons'
+
+import LinkCard from '../components/LinkCard.vue';
+import { ref } from 'vue'
+
+const views = ref([
+    {
+        name: 'Food',
+        path: 'food',
+        icon: pizzaOutline
+    },
+    {
+        name: 'Food Category',
+        path: 'food-category',
+        icon: appsOutline
+    },
+    {
+        name: 'Restaurant',
+        path: 'restaurant',
+        icon: restaurantOutline
+    },
+    {
+        name: 'Restaurant Category',
+        path: 'restaurant-category',
+        icon: appsOutline
+    }
+]);
+const router = useIonRouter()
+const redirect = (path) => {
+    router.push(path);
+};
 </script>
 
 <style scoped>
@@ -25,9 +62,15 @@ ul {
     list-style: none;
     list-style-position: inside;
     padding-left: 0;
-
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+ion-icon {
+    font-size: 32px;
 }
 </style>
