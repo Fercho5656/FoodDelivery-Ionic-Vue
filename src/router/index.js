@@ -25,6 +25,14 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: '/food',
+    name: 'Food',
+    component: () => import('../views/Food.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
