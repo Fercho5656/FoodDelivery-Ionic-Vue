@@ -148,6 +148,7 @@ picture>img {
     position: relative;
     object-fit: cover;
     width: 100%;
+    max-height: 200px;
 }
 
 .blur {
