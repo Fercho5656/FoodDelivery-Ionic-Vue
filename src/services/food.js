@@ -25,6 +25,21 @@ export const addFood = async food => {
   }
 }
 
+export const editFood = async (id, food) => {
+  try {
+    const res = await fetch(`${URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(food)
+    })
+    return res
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const deleteFood = async id => {
   try {
     const response = await fetch(`${URL}/${id}`, {
