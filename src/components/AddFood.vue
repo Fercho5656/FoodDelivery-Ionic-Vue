@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { IonButton, IonItem, IonLabel, IonSelect, IonSelectOption } from '@ionic/vue';
+import { IonButton, IonItem, IonLabel, IonSelect, IonSelectOption, toastController } from '@ionic/vue';
 import Input from './Input.vue';
 import { onMounted, ref } from 'vue'
 import { addFood } from '../services/food'
@@ -55,7 +55,13 @@ const onSend = async () => {
     }
     const res = await addFood(food);
     if (res) {
-        emit('sendFood', food);
+        const toast = await toastController.create({
+            message: 'Food Added',
+            duration: 2000,
+            position: 'bottom'
+        })
+        toast.present();
+        emit('sendFood', {id: res.id, ...food});
     }
     console.log(res);
 }
