@@ -18,7 +18,9 @@ defineProps({
     default: "text",
   },
   placeholder: String,
-  modelValue: String,
+  modelValue: {
+    type: [Number, String]
+  },
   required: Boolean,
 });
 </script>
