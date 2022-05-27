@@ -27,7 +27,8 @@
 <script setup>
 import {
     IonButton,
-    IonIcon
+    IonIcon,
+    IonText
 } from '@ionic/vue';
 
 import {
