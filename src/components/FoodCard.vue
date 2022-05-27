@@ -17,6 +17,9 @@
             <ion-text class="name">{{ name }}&nbsp;</ion-text>
             <ion-text class="price">${{ price }}</ion-text>
         </div>
+        <ion-button class="delete" fill="clear" @click="$emit('deleteFood')">
+            <ion-icon :icon="trashBinOutline"></ion-icon>
+        </ion-button>
         <picture>
             <span class="black-opacity"></span>
             <img class="blur" :src="imgSrc" :alt="imgAlt">
@@ -36,10 +39,12 @@ import {
     heartDislikeCircleOutline,
     star,
     starHalf,
-    timer
+    timer,
+    trashBinOutline
 } from 'ionicons/icons';
 
 import { ref } from 'vue'
+const emit = defineEmits(['deleteFood'])
 const props = defineProps({
     imgSrc: {
         type: String,
@@ -141,6 +146,17 @@ ion-text {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    color: #fff;
+}
+
+.delete {
+    bottom: 0;
+    right: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.delete ion-icon {
     color: #fff;
 }
 

@@ -12,13 +12,13 @@
         </ion-header>
         <ion-content>
             <Modal :show="addFoodModal" @close="addFoodModal = false">
-                <AddFood @send-food="onSend"/>
+                <AddFood @send-food="onSend" />
             </Modal>
             <h1>Food :D</h1>
             <ul>
                 <li v-for="food in foods">
                     <FoodCard :imgSrc="food.imageUrl" :imgAlt="food.description" :stars="food.stars" :price="food.price"
-                        :name="food.name" :timeToCook="food.preparationMinutes" />
+                        :name="food.name" :timeToCook="food.preparationMinutes" @delete-food="onDelete(food.id)" />
                 </li>
             </ul>
         </ion-content>
@@ -33,7 +33,8 @@ import {
     IonHeader,
     IonIcon,
     IonButton,
-    IonBackButton
+    IonBackButton,
+    toastController
 } from '@ionic/vue'
 
 import { addOutline } from 'ionicons/icons';
@@ -43,7 +44,7 @@ import AddFood from '../components/AddFood.vue';
 import Modal from '../components/Modal.vue';
 import { onMounted, ref } from 'vue'
 
-import { getAllFood } from '../services/food'
+import { getAllFood, deleteFood } from '../services/food'
 
 const foods = ref();
 const addFoodModal = ref(false);
@@ -56,6 +57,19 @@ onMounted(async () => {
 const onSend = (food) => {
     foods.value.push(food);
     addFoodModal.value = false;
+}
+
+const onDelete = async id => {
+    const res = await deleteFood(id);
+    if (res.status === 204) {
+        const toast = await toastController.create({
+            message: 'Food deleted',
+            duration: 2000,
+            position: 'bottom'
+        })
+        toast.present();
+        foods.value = foods.value.filter(food => food.id !== id);
+    }
 }
 </script>
 

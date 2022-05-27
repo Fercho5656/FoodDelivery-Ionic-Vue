@@ -24,3 +24,14 @@ export const addFood = async food => {
     console.log(error)
   }
 }
+
+export const deleteFood = async id => {
+  try {
+    const response = await fetch(`${URL}/${id}`, {
+      method: 'DELETE'
+    })
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}
