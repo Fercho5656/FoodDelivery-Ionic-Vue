@@ -21,7 +21,7 @@
             <ion-icon :icon="trashBinOutline"></ion-icon>
         </ion-button>
         <picture>
-            <span class="black-opacity"></span>
+            <span class="black-opacity" @click="$emit('editFood')"></span>
             <img class="blur" :src="imgSrc" :alt="imgAlt">
         </picture>
     </div>
@@ -44,7 +44,7 @@ import {
 } from 'ionicons/icons';
 
 import { ref } from 'vue'
-const emit = defineEmits(['deleteFood'])
+const emit = defineEmits(['deleteFood', 'editFood'])
 const props = defineProps({
     imgSrc: {
         type: String,
