@@ -1,5 +1,5 @@
 const { fetch } = window
-const URL = 'https://localhost:5001/api/Food'
+const URL = 'https://food-frank.azurewebsites.net/api/Food'
 
 export const getAllFood = async () => {
   try {
