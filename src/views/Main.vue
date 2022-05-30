@@ -32,22 +32,22 @@ import { ref } from 'vue'
 const views = ref([
     {
         name: 'Food',
-        path: 'food',
+        path: '/food',
         icon: pizzaOutline
     },
     {
         name: 'Food Category',
-        path: 'food-category',
+        path: '/food/categories',
         icon: appsOutline
     },
     {
         name: 'Restaurant',
-        path: 'restaurant',
+        path: '/restaurant',
         icon: restaurantOutline
     },
     {
         name: 'Restaurant Category',
-        path: 'restaurant-category',
+        path: '/restaurant/categories',
         icon: appsOutline
     }
 ]);
