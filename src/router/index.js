@@ -33,6 +33,14 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/restaurant/categories',
+    name: 'RestaurantCategories',
+    component: () => import('../views/RestaurantCategories.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
