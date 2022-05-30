@@ -35,6 +35,22 @@ const routes = [
     }
   },
   {
+    path: '/food/categories',
+    name: 'FoodCategories',
+    component: () => import('../views/FoodCategories.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/restaurant',
+    name: 'Restaurant',
+    component: () => import('../views/Restaurants.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/restaurant/categories',
     name: 'RestaurantCategories',
     component: () => import('../views/RestaurantCategories.vue'),
