@@ -2,12 +2,17 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-button slot="start">
+                <ion-buttons slot="start">
                     <ion-back-button default-href="/"></ion-back-button>
-                </ion-button>
-                <ion-button slot="end" @click="addFoodModal = true">
-                    <ion-icon :icon="addOutline"></ion-icon>
-                </ion-button>
+                </ion-buttons>
+                <ion-title>
+                    <ion-text>
+                        <h1>Food</h1>
+                    </ion-text>
+                </ion-title>
+                <ion-buttons slot="end" @click="addFoodModal = true">
+                    <ion-icon class="add" :icon="addOutline"></ion-icon>
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content>
@@ -17,7 +22,6 @@
             <Modal :show="editFoodModal" @close="editFoodModal = false">
                 <FoodForm @send-food="onSendEdit" :food-data="editFood" :id="editId" :edit-mode="true" />
             </Modal>
-            <h1>Food :D</h1>
             <ul>
                 <li v-for="food in foods" :key="food.id">
                     <FoodCard :imgSrc="food.imageUrl" :imgAlt="food.description" :stars="food.stars" :price="food.price"
@@ -36,7 +40,10 @@ import {
     IonToolbar,
     IonHeader,
     IonIcon,
+    IonTitle,
+    IonText,
     IonButton,
+    IonButtons,
     IonBackButton,
     toastController
 } from '@ionic/vue'
@@ -103,5 +110,10 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+.add {
+    font-size: 32px;
+    color: #00a680;
 }
 </style>
