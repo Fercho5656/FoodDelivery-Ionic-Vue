@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/'
 
-import { IonicVue } from '@ionic/vue'
+import { IonicVue, IonIcon } from '@ionic/vue'
 
 import '@ionic/vue/css/core.css'
 
@@ -19,7 +19,11 @@ import '@ionic/vue/css/display.css'
 
 import './theme/variables.css'
 
-createApp(App)
+const app = createApp(App)
   .use(IonicVue)
+  .use(IonIcon)
   .use(router)
-  .mount('#app')
+
+router.isReady().then(() => {
+  app.mount('#app')
+})
