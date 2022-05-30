@@ -11,3 +11,33 @@ export const getFoodCategories = async () => {
     console.error(error)
   }
 }
+
+export const addFoodCategory = async foodCategory => {
+  try {
+    const res = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(foodCategory)
+    })
+    return await res.json()
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const editFoodCategory = async (id, foodCategory) => {
+  try {
+    const res = await fetch(`${URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(foodCategory)
+    })
+    return res
+  } catch (error) {
+    console.error(error)
+  }
+}
