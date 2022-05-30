@@ -9,7 +9,7 @@ export const registerUser = async user => {
       },
       body: JSON.stringify(user)
     })
-    if (response.status === 200) {
+    if (response.status === 201) {
       return await response.json()
     } else {
       throw new Error('Error registering user')
